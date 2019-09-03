@@ -5,7 +5,7 @@ sudo: required
 # 构建的分支
 branches:
   only: 
-    -master
+    - master
 
 before_install:
   # 参考：https://yarnpkg.com/lang/en/docs/install-ci/
@@ -18,7 +18,7 @@ before_install:
 
 # S: Build Lifecycle
 install: 
-  -yarn install
+  - yarn install
 
 script:
   - yarn run build
