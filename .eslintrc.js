@@ -14,7 +14,8 @@ module.exports = {
     'class-methods-use-this': 0,
     'operator-linebreak': 0,
     'object-curly-newline': 0,
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    'no-console': 0
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'

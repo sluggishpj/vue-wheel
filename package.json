@@ -1,32 +1,28 @@
 {
-  "name": "ts",
+  "name": "pwa-vue",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "capacitor-copy": "vue-cli-service capacitor-copy",
-    "capacitor-init": "vue-cli-service capacitor-init",
-    "capacitor-open": "vue-cli-service capacitor-open",
-    "capacitor-update": "vue-cli-service capacitor-update",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@capacitor/cli": "^1.0.0-alpha.38",
-    "@capacitor/core": "^1.0.0-alpha.38",
     "core-js": "^2.6.5",
+    "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
-    "@vue/cli-plugin-babel": "^3.10.0",
-    "@vue/cli-plugin-eslint": "^3.10.0",
-    "@vue/cli-plugin-typescript": "^3.10.0",
-    "@vue/cli-plugin-unit-jest": "^3.10.0",
-    "@vue/cli-service": "^3.10.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-plugin-pwa": "^3.11.0",
+    "@vue/cli-plugin-typescript": "^3.11.0",
+    "@vue/cli-plugin-unit-jest": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
@@ -34,11 +30,10 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
+    "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
-    "vue-cli-plugin-pwa": "^1.0.0-alpha.1",
     "vue-template-compiler": "^2.6.10"
   }
 }
