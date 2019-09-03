@@ -4,7 +4,8 @@ sudo: required
 
 # 构建的分支
 branches:
-  only: -master
+  only: 
+    -master
 
 before_install:
   # 参考：https://yarnpkg.com/lang/en/docs/install-ci/
@@ -16,21 +17,24 @@ before_install:
 
 
 # S: Build Lifecycle
-install: -yarn install
+install: 
+  -yarn install
 
 script:
   - yarn run build
 
-# 参考：https://docs.travis-ci.com/user/deployment/pages/
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN # github 上的token环境变量
-  local-dir: ./dist/ ## 根据情况自定义到静态文件输出目录
-  target-branch: gh-pages
-  verbose: true
-  on:
-    branch: master
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "sluggishpj"
+  - git config user.email "sluggishpj@qq.com"
+  - git add .
+  - git commit -m "Update"
+  - git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master
+
+env:
+  global:
+    - GH_REF: github.com/sluggishpj/vue-wheel.git
 
 cache:
   yarn: true
