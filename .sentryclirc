@@ -1,0 +1,5 @@
+[defaults]
+org = xpj
+project = vue-wheel
+
+[auth]
