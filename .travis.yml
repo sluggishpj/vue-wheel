@@ -30,7 +30,7 @@ script:
 
 after_success:
   # 移除 map 文件
-  - rm ./dist/*.js.map
+  - rm ./dist/js/*.js.map
 
 # 参考：https://docs.travis-ci.com/user/deployment/pages/
 deploy:
