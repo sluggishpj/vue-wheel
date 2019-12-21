@@ -24,10 +24,12 @@ module.exports = {
       // 设置上传sourcemap
       config.plugin('sentryCli').use(SentryCliPlugin, [
         {
+          release: process.env.VERSION,
           include: '.',
           ignoreFile: '.sentrycliignore',
-          ignore: ['node_modules'],
-          configFile: 'sentry.properties'
+          ignore: ['node_modules', 'babel.config.js', 'vue.config.js'],
+          configFile: 'sentry.properties',
+          urlPrefix: '~/dist/js'
         }
       ])
     })
