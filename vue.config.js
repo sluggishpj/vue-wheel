@@ -1,5 +1,13 @@
+const format = require('date-fns/format')
+
 const SentryCliPlugin = require('@sentry/webpack-plugin')
-const webpack = require('webpack')
+const webpack = require('./node_modules/webpack')
+
+if (process.env.NODE_ENV === 'production') {
+  if (!process.env.VERSION) {
+    process.env.VERSION = format(new Date(), 'yyyy-MM-dd-hh-mm-ss')
+  }
+}
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '' : '',
@@ -14,22 +22,28 @@ module.exports = {
 
   chainWebpack: config => {
     config.when(process.env.NODE_ENV === 'production', () => {
-      // 设置环境变量
-      config.plugin('webpack.DefinePlugin').use(webpack.DefinePlugin, [
+      config.merge({
+        devtool: false
+      })
+      const { VERSION } = process.env
+
+      config.plugin('SourceMapDevToolPlugin').use(webpack.SourceMapDevToolPlugin, [
         {
-          'process.env.VERSION': JSON.stringify(process.env.VERSION)
+          filename: 'sourcemaps/[name].[hash:8].js.map',
+          publicPath: `https://sentry.io/api/0/organizations/xpj/releases/${VERSION}/files/`,
+          fileContext: 'js'
         }
       ])
 
-      // 设置上传sourcemap
+      // 设置上传 sourcemap
       config.plugin('sentryCli').use(SentryCliPlugin, [
         {
-          release: process.env.VERSION,
-          include: '.',
+          release: VERSION,
+          include: '/sourcemaps',
           ignoreFile: '.sentrycliignore',
           ignore: ['node_modules', 'babel.config.js', 'vue.config.js'],
           configFile: 'sentry.properties',
-          urlPrefix: '~/dist/js'
+          urlPrefix: '~/'
         }
       ])
     })

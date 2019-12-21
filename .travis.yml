@@ -23,14 +23,14 @@ before_script:
   # 追加 sentry token
   - echo token = $SENTRY_TOKEN >> .sentryclirc
   - export NODE_ENV=production
-  - export VERSION=${CI_COMMIT_SHA:0:8}
+  - export VERSION=${TRAVIS_COMMIT:0:8}
 
 script:
   - yarn run build
 
 after_success:
   # 移除 map 文件
-  - rm ./dist/js/*.js.map
+  - rm -rf ./dist/sourcemaps
 
 # 参考：https://docs.travis-ci.com/user/deployment/pages/
 deploy:
