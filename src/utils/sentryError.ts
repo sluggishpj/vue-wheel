@@ -19,7 +19,7 @@ function wrapError<T extends Error>(
   ErrClass: { new (message: string): T },
   level: Sentry.Severity = Sentry.Severity.Error
 ): Function {
-  return function(msg: string, needProd: boolean = true) {
+  return (msg: string, needProd: boolean = true) => {
     if (needProd) {
       if (process.env.NODE_ENV === 'production') {
         Sentry.withScope(function(scope) {

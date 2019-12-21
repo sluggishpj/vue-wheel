@@ -30,7 +30,7 @@ module.exports = {
       config.plugin('SourceMapDevToolPlugin').use(webpack.SourceMapDevToolPlugin, [
         {
           filename: 'sourcemaps/[name].[hash:8].js.map',
-          publicPath: `https://sentry.io/api/0/organizations/xpj/releases/${VERSION}/files/`,
+          // publicPath: `https://sentry.io/api/0/organizations/xpj/releases/${VERSION}/files/`,
           fileContext: 'js'
         }
       ])
@@ -43,7 +43,7 @@ module.exports = {
           ignoreFile: '.sentrycliignore',
           ignore: ['node_modules', 'babel.config.js', 'vue.config.js'],
           configFile: 'sentry.properties',
-          urlPrefix: '~/'
+          urlPrefix: '~/vue-wheel/sourcemap'
         }
       ])
     })
