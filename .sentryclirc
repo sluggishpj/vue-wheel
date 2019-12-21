@@ -1,4 +1,5 @@
 [defaults]
+url = https://sentry.io/
 org = xpj
 project = vue-wheel
 

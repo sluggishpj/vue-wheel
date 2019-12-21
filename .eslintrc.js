@@ -17,7 +17,9 @@ module.exports = {
     'linebreak-style': 0,
     'no-console': 0,
     'import/prefer-default-export': 0,
-    'arrow-parens': 0
+    'arrow-parens': 0,
+    'space-before-function-paren': 0,
+    'func-names': 0
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'
