@@ -39,7 +39,7 @@ module.exports = {
       config.plugin('sentryCli').use(SentryCliPlugin, [
         {
           release: VERSION,
-          include: '/sourcemaps',
+          include: '/dist/sourcemaps',
           ignoreFile: '.sentrycliignore',
           ignore: ['node_modules', 'babel.config.js', 'vue.config.js'],
           configFile: 'sentry.properties',
