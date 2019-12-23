@@ -65,4 +65,4 @@ export const sendReqError = wrapError(ReqError)
 export const sendResError = wrapError(ResError)
 export const sendOtherError = wrapError(OtherError, Sentry.Severity.Warning)
 
-sendOtherError('有人访问')
+sendOtherError(`有人访问：${process.env.VERSION}`)
