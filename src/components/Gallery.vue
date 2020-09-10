@@ -58,16 +58,6 @@ export default {
   background: url('https://s1.ax1x.com/2020/09/10/wJCVN4.jpg') 0 / cover fixed;
 }
 
-.gallery-item::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 2;
-}
-
 .gallery-item {
   height: 300px;
   width: 300px;
@@ -120,5 +110,16 @@ export default {
   z-index: 1;
   padding: 10px;
   overflow: hidden;
+  position: relative;
+}
+
+.content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 6;
 }
 </style>
