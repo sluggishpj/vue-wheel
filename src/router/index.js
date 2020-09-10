@@ -1,27 +1,30 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import { cameCaseToShortLine } from '../utils/string'
+import { routerConfigs } from './config'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-];
+function resolveComponent(name) {
+  return () => import(/* webpackChunkName: "chunk-[request][index]" */ `@/views/${name}.vue`)
+}
 
+function resolveRoutes(configArr) {
+  return configArr.map(({ path, name, component }) => {
+    const config = { name, path, component }
+    if (!path) {
+      config.path = `/${ cameCaseToShortLine(name)}`
+    }
+    if (!component) {
+      config.component = resolveComponent(name)
+    }
+    return config
+  })
+}
+
+export const routes = resolveRoutes(routerConfigs)
 const router = new VueRouter({
   routes,
-});
+})
 
-export default router;
+export default router
