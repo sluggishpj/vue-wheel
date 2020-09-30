@@ -1,4 +1,4 @@
-import { debounce } from 'lodash'
+import { throttle } from 'lodash'
 import { createDomElem, prependChild, setElemStyle } from '@/utils/dom'
 
 // 设置上下两个撑开元素的高度
@@ -107,7 +107,7 @@ export default {
 
     initData(el, binding)
 
-    const onScroll = debounce(handleScroll(el, callback), 100)
+    const onScroll = throttle(handleScroll(el, callback), 100)
 
     el.xVirtualScrollConfig.onScroll = onScroll
 

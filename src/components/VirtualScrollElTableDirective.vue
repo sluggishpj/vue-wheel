@@ -29,7 +29,7 @@ export default {
   components: { [Button.name]: Button, [Table.name]: Table, [TableColumn.name]: TableColumn },
   data() {
     return {
-      data: new Array(1000).fill(0).map((item, idx) => ({ idx, name: `第${idx}个元素` })),
+      data: new Array(10000).fill(0).map((item, idx) => ({ idx, name: `第${idx}个元素` })),
       tableHeight: 500,
       viewHeight: 450,
       rowHeight: 120,
@@ -43,7 +43,7 @@ export default {
 
     changeData() {
       const ranNum = Math.random()
-      this.data = new Array(Math.round(1000 * ranNum))
+      this.data = new Array(Math.round(10000 * ranNum))
         .fill(0)
         .map((item, idx) => ({ idx, name: `第${idx}个元素` }))
     },
