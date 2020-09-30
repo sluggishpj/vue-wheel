@@ -27,14 +27,18 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-unused-vars': 'warn',
     'linebreak-style': 0,
     // 结尾不使用分号
     semi: ['error', 'never'],
     'import/prefer-default-export': 0,
     'template-curly-spacing': 0,
-    indent: 0,
     'no-param-reassign': 0,
-    'no-plusplus': 0
+    'no-plusplus': 0,
+    'object-curly-newline': 0,
+    "template-curly-spacing" : 0,
+    "no-restricted-syntax": 0,
+    indent : 0
   },
   overrides: [
     {

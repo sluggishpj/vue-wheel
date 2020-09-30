@@ -8,4 +8,7 @@ export const routerConfigs = [
   {
     name: 'SwingNum',
   },
+  {
+    name: 'VirtualScrollElTableDirective',
+  },
 ]

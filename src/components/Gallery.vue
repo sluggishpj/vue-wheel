@@ -9,6 +9,7 @@
         </div>
       </div>
       <div class="content">
+        <div class="cover" @click="goToRouter(config)"></div>
         <components :is="config.name"></components>
       </div>
     </div>
@@ -34,6 +35,9 @@ export default {
   methods: {
     resolveSourceLink({ name }) {
       return `https://github.com/sluggishpj/vue-wheel/tree/master/src/components/${name}.vue`
+    },
+    goToRouter({ path }) {
+      this.$router.push({ path })
     },
   },
 }
@@ -111,10 +115,10 @@ export default {
   padding: 10px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 }
 
-.content::before {
-  content: '';
+.cover {
   position: absolute;
   left: 0;
   right: 0;

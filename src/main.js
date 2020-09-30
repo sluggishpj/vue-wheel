@@ -3,6 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import '@/assets/css/normalize.css'
+import './directives/index'
 
 Vue.config.productionTip = false
 

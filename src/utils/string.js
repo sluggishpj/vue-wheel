@@ -17,3 +17,10 @@ export const cameCaseToShortLine = (str) => {
 
   return res
 }
+
+/**
+ * 短线 转换 为驼峰
+ * eg. hello-world => helloWorld
+ * @param {string} str 字符串
+ */
+export const shortLineToCameCase = (str) => str.replace(/-(\w)/g, (_, char) => (char ? char.toUpperCase() : ''))
