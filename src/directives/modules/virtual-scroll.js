@@ -91,7 +91,7 @@ export default {
     const { data, wrapperClass, viewHeight, rowHeight, cacheSize = 20, callback } = binding.value
 
     if (wrapperClass) {
-      wrapperEl = el.querySelector(`.${wrapperClass}`)
+      wrapperEl = el.querySelector(wrapperClass)
     }
 
     el.xVirtualScrollConfig = {

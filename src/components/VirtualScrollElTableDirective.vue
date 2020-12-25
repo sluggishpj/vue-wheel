@@ -10,7 +10,7 @@
       v-virtual-scroll="{
         data,
         viewHeight,
-        wrapperClass: 'el-table__body-wrapper',
+        wrapperClass: '.el-table__body-wrapper',
         rowHeight,
         callback: handleShowData,
       }"
@@ -26,7 +26,11 @@
 import { Button, Table, TableColumn } from 'element-ui'
 
 export default {
-  components: { [Button.name]: Button, [Table.name]: Table, [TableColumn.name]: TableColumn },
+  components: {
+    [Button.name]: Button,
+    [Table.name]: Table,
+    [TableColumn.name]: TableColumn,
+  },
   data() {
     return {
       data: new Array(10000).fill(0).map((item, idx) => ({ idx, name: `第${idx}个元素` })),
@@ -34,6 +38,8 @@ export default {
       viewHeight: 450,
       rowHeight: 120,
       showData: [],
+      selectedData: '',
+      options: [],
     }
   },
   methods: {
@@ -46,6 +52,10 @@ export default {
       this.data = new Array(Math.round(10000 * ranNum))
         .fill(0)
         .map((item, idx) => ({ idx, name: `第${idx}个元素` }))
+    },
+
+    handleOptions(data) {
+      this.options = data
     },
   },
 }
