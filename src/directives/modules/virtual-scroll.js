@@ -18,6 +18,7 @@ function setCurrentShowData(el, cb) {
     dataLength,
     showDataLength,
     data,
+    scrollTop: preScrollTop,
   } = el.xVirtualScrollConfig
   const { scrollTop } = wrapperEl
 
@@ -40,7 +41,18 @@ function setCurrentShowData(el, cb) {
   setPadElemStyle(el.xVirtualScrollConfig)
 
   // 避免设置高度后又触发滚动事件
-  wrapperEl.scrollTop = scrollTop
+  // 向上滚动 不用再设置 scrollTop 了，向下滚动才需要
+  if (preScrollTop < scrollTop) {
+    // 向下滚动
+    console.log('向下滚动')
+    wrapperEl.scrollTop = scrollTop
+  } else {
+    console.log('向上滚动')
+    setTimeout(() => {
+      wrapperEl.scrollTop = scrollTop
+    })
+  }
+  el.xVirtualScrollConfig.scrollTop = scrollTop
 }
 
 // 新增撑开元素
@@ -71,6 +83,8 @@ function initConfig(el, binding) {
     dataLength,
     showDataLength,
     maxStartIdx: dataLength - showDataLength - 1,
+    // 记录上次的scrollTop，便于知道是向上还是向下
+    scrollTop: 0,
   }
 }
 
@@ -80,7 +94,8 @@ function initData(el, binding) {
 }
 
 function handleScroll(el, cb) {
-  return () => {
+  return (e) => {
+    console.log(e)
     setCurrentShowData(el, cb)
   }
 }
@@ -112,26 +127,28 @@ export default {
     el.xVirtualScrollConfig.onScroll = onScroll
 
     // 添加滚动事件
-    wrapperEl.addEventListener('scroll', onScroll)
+    wrapperEl.addEventListener('scroll', onScroll, false)
 
     onScroll()
   },
 
   unbind(el) {
     const { wrapperEl, onScroll } = el.xVirtualScrollConfig
-    wrapperEl.removeEventListener('scroll', onScroll)
+    wrapperEl.removeEventListener('scroll', onScroll, false)
     el.xVirtualScrollConfig = null
   },
 
   update(el, binding) {
     const { onScroll } = el.xVirtualScrollConfig
     const { value, oldValue } = binding
-
     if (value.data !== oldValue.data) {
       // 重新设置个数
       initConfig(el, binding)
       el.xVirtualScrollConfig.wrapperEl.scrollTop = 0
-      onScroll()
+      el.xVirtualScrollConfig.scrollTop = 0
+      setTimeout(() => {
+        onScroll()
+      })
     }
   },
 }

@@ -7,6 +7,7 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
+  plugins: ["prettier"],
   settings: {
     'import/resolver': {
       node: {

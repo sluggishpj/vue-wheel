@@ -35,7 +35,7 @@ export default {
     return {
       data: new Array(10000).fill(0).map((item, idx) => ({ idx, name: `第${idx}个元素` })),
       tableHeight: 500,
-      viewHeight: 450,
+      viewHeight: 451,
       rowHeight: 120,
       showData: [],
       selectedData: '',
