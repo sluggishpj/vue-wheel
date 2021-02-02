@@ -41,14 +41,12 @@ function setCurrentShowData(el, cb) {
   setPadElemStyle(el.xVirtualScrollConfig)
 
   // 避免设置高度后又触发滚动事件
-  // 向上滚动 不用再设置 scrollTop 了，向下滚动才需要
   if (preScrollTop < scrollTop) {
     // 向下滚动
-    console.log('向下滚动')
     wrapperEl.scrollTop = scrollTop
   } else {
-    console.log('向上滚动')
-    setTimeout(() => {
+    // 避免向上滚动时重新设置高度时，会再次出发 scroll 事件
+    Promise.resolve().then(() => {
       wrapperEl.scrollTop = scrollTop
     })
   }
@@ -94,8 +92,7 @@ function initData(el, binding) {
 }
 
 function handleScroll(el, cb) {
-  return (e) => {
-    console.log(e)
+  return () => {
     setCurrentShowData(el, cb)
   }
 }
