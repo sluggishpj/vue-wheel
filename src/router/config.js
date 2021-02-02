@@ -11,4 +11,7 @@ export const routerConfigs = [
   {
     name: 'VirtualScrollElTableDirective',
   },
+  {
+    name: 'VirtualScrollElSelect',
+  },
 ]
