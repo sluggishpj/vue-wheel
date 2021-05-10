@@ -15,7 +15,7 @@
     "date-fns": "^2.16.1",
     "element-ui": "^2.13.2",
     "eslint-plugin-prettier": "^3.3.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "register-service-worker": "^1.7.1",
     "resize-observer-polyfill": "^1.5.1",
     "vue": "^2.6.11",
